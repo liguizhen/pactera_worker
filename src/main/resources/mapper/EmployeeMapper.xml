@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.pactera.mapper.UserMapper">
+	<select id="findEmployee" resultType="employee">
+		select a.employee, a.total
+		from (select b.employee, count(b.attendance_date) as total
+		from work b
+		group by employee) a
+		where a.total &gt; (select count(distinct(c.attendance_date)) from work_date c)
+	</select>
+</mapper>
