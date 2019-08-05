@@ -11,7 +11,9 @@ import java.util.List;
 @Mapper
 public interface EmployeeMapper {
 
-    public List<Employee> findEmployee();
+    List<Employee> findEmployee();
+
+    List<String> findLackDate(String employee);
 
 }
 

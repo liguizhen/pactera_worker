@@ -10,4 +10,11 @@ import org.apache.ibatis.annotations.Mapper;
 public interface WorkMapper {
 
     void importWork(PactWork pactWork);
+
+    void deleteWork();
+
+    void importWorkDate(String attendance_date);
+
+    void deleteWorkDate();
+
 }

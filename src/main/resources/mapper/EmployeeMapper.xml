@@ -1,11 +1,20 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.pactera.mapper.UserMapper">
-	<select id="findEmployee" resultType="employee">
+<mapper namespace="com.pactera.mapper.EmployeeMapper">
+	<select id="findEmployee" resultType="Employee">
 		select a.employee, a.total
 		from (select b.employee, count(b.attendance_date) as total
 		from work b
 		group by employee) a
-		where a.total &gt; (select count(distinct(c.attendance_date)) from work_date c)
+		where a.total &lt; (select count(distinct(c.attendance_date)) from work_date c)
+	</select>
+
+	<select id="findLackDate" resultType="String">
+		select m.attendance_date from work_date m  where m.attendance_date not in
+		(select n.attendance_date
+		from work  n
+		where n.employee=#{employee})
+		and m.attendance_date in
+		(select  distinct(c.attendance_date) from work_date c)
 	</select>
 </mapper>

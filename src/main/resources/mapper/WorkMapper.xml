@@ -4,4 +4,16 @@
 	<select id="importWork" parameterType="com.pactera.domain.PactWork">
 		insert into work(attendance_date,employee) values(#{attendance_date},#{employee})
 	</select>
+
+	<select id="importWorkDate" parameterType="String">
+		insert into work_date(attendance_date) values(#{attendance_date})
+	</select>
+
+	<select id="deleteWork" parameterType="String">
+		delete from  work
+	</select>
+
+	<select id="deleteWorkDate" parameterType="String">
+		delete from  work_date
+	</select>
 </mapper>

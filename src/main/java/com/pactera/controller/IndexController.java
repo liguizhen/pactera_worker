@@ -1,6 +1,6 @@
 package com.pactera.controller;
 
-import com.pactera.domain.Employee;
+import com.pactera.domain.EmployeeLack;
 import com.pactera.service.EmployeeService;
 import com.pactera.service.WorkService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,13 +24,19 @@ public class IndexController {
 
     @RequestMapping("index")
     public ModelAndView index(){
-        List<Employee> employeeList =  employeeService.findEmployee();
-        return new ModelAndView("/index");
+        List<EmployeeLack> list = employeeService.findEmployee();
+        ModelAndView mv = new ModelAndView("/index");
+        mv.addObject("employeeList",list);
+        return mv;
     }
 
-    @RequestMapping("pltest")
-    public void importWork(){
+    @RequestMapping("import")
+    public ModelAndView importWork(){
         workService.importWork();
+        List<EmployeeLack> list = employeeService.findEmployee();
+        ModelAndView mv = new ModelAndView("/index");
+        mv.addObject("employeeList",list);
+        return mv;
     }
 
 }

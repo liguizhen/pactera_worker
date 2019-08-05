@@ -1,6 +1,6 @@
 package com.pactera.service;
 
-import com.pactera.domain.Employee;
+import com.pactera.domain.EmployeeLack;
 
 import java.util.List;
 
@@ -12,6 +12,6 @@ public interface EmployeeService {
     /**
      * 查询所有的用户
      */
-    public List<Employee> findEmployee();
+    public List<EmployeeLack> findEmployee();
 
 }
