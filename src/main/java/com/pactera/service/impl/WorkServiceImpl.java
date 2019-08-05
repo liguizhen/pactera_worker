@@ -26,6 +26,11 @@ public class WorkServiceImpl implements WorkService {
     @Autowired
     private WorkMapper workMapper;
 
+    /**
+     * 要求excel:
+     * 1、文件路径及名称为：E:\work.xls
+     * 2、设置日期格式为 yyyy/MM/dd
+     */
     @Override
     public void importWork() {
         Sheet sheet;
